@@ -12,7 +12,7 @@ resource "aws_db_instance" "postgres_instance" {
     password             = "Admin12345!"
 
 
-    db_subnet_group_name = var.db_subnet_group_name
+    db_subnet_group_name = aws_db_subnet_group.postgres_subnet_group.name
     vpc_security_group_ids = [aws_security_group.database_security_group.id]
     skip_final_snapshot  = true
     publicly_accessible = false
@@ -27,7 +27,7 @@ resource "aws_elasticache_cluster" "redis_cluster" {
     engine               = "redis"
     node_type            = "cache.t3.micro"
     num_cache_nodes      = 1
-    subnet_group_name    = var.db_subnet_group_name_2
+    subnet_group_name    = aws_db_subnet_group.redis_subnet_group.name
     security_group_ids   = [aws_security_group.database_security_group.id]
     tags = {
         Name = "redis_cluster"

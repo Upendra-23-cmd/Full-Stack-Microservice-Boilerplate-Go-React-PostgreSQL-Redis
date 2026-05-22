@@ -35,3 +35,24 @@ resource "aws_security_group" "database_security_group" {
       Name = "database_security_group"
     }
 }
+
+resource "aws_db_subnet_group" "redis_subnet_group" {
+    name       = "redis_subnet_group"
+    description = "Subnet group for Redis"
+    subnet_ids = var.db_subnet_group_name_2
+
+    tags = {
+      Name = "redis_subnet_group"
+    }
+}
+
+resource "aws_db_subnet_group" "postgres_subnet_group" {
+    name       = "postgres_subnet_group"
+    description = "Subnet group for PostgreSQL"
+    subnet_ids = var.db_subnet_group_name
+
+    tags = {
+      Name = "postgres_subnet_group"
+    }
+  
+}

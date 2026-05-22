@@ -25,7 +25,7 @@ output "private_subnet_id_backend" {
 
 output "private_subnet_id_database" {
     description = "The IDs of the private subnets"
-    value      = aws_subnet.database_private_subnet
+    value      = aws_subnet.database_private_subnet.id
 }
 
 output "private_subnet_id_database_2" {

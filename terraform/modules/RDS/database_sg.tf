@@ -36,23 +36,29 @@ resource "aws_security_group" "database_security_group" {
     }
 }
 
-resource "aws_db_subnet_group" "redis_subnet_group" {
-    name       = "redis_subnet_group"
+resource "aws_elasticache_subnet_group" "redis_subnet_group" {
+    name       = "redis-subnet-group"
     description = "Subnet group for Redis"
-    subnet_ids = var.db_subnet_group_name_2
+    subnet_ids = [ 
+        var.db_subnet_group_name_2[0],
+        var.db_subnet_group_name[0]
+    ]
 
     tags = {
-      Name = "redis_subnet_group"
+      Name = "redis-subnet-group"
     }
 }
 
 resource "aws_db_subnet_group" "postgres_subnet_group" {
-    name       = "postgres_subnet_group"
+    name       = "postgres-subnet-group"
     description = "Subnet group for PostgreSQL"
-    subnet_ids = var.db_subnet_group_name
+    subnet_ids = [
+        var.db_subnet_group_name[0],
+        var.db_subnet_group_name_2[0]
+    ]
 
     tags = {
-      Name = "postgres_subnet_group"
+      Name = "postgres-subnet-group"
     }
   
 }

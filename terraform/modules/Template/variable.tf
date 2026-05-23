@@ -53,3 +53,8 @@ variable "volume_type_backend" {
     default     = "gp2"
   
 }
+
+variable "vpc_id" {
+  description = "The ID of the VPC where the EC2 instance will be deployed"
+    type        = string
+}

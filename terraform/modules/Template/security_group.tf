@@ -9,7 +9,14 @@ resource "aws_security_group" "frontend_Security_group" {
         cidr_blocks = ["10.0.1.0/24"]
     }
 
-       ingress {
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        security_groups = [aws_security_group.security_group_alb.id]
+    }
+
+    ingress {
         description = "allow backend instances to access the instance"
         from_port = 8080
         to_port = 8080

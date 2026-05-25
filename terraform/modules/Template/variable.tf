@@ -10,11 +10,6 @@ variable "image_id_frontend" {
     default     = "ami-091138d0f0d41ff90"
 }
 
-variable "key_name" {
-    description = "The name of the key pair to use for the EC2 instance"
-    type        = string
-}
-
 variable "volume_size_frontend" {
     description = "The size of the EBS volume in GB"
     type        = number
@@ -81,4 +76,9 @@ variable "volume_type_bastion" {
     description = "The type of the EBS volume (e.g., gp2, io1)"
     type        = string
     default     = "gp2" 
+}
+
+variable "alb_security_group_id" {
+    description = "The ID of the security group to allow access to the ALB"
+    type        = string
 }

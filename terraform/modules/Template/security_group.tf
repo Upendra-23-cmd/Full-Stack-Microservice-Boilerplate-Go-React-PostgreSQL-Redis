@@ -1,3 +1,6 @@
+
+# This file defines the security groups for the frontend, backend, and bastion host instances in the infrastructure.
+
 resource "aws_security_group" "frontend_Security_group" {
     name       = "frontend_security_group"
     description = "Security group for frontend instances"
@@ -13,7 +16,7 @@ resource "aws_security_group" "frontend_Security_group" {
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        security_groups = [aws_security_group.security_group_alb.id]
+        security_groups = [var.alb_security_group_id.id]
     }
 
     ingress {
@@ -35,6 +38,10 @@ resource "aws_security_group" "frontend_Security_group" {
     }
     
 }
+
+
+# backend server security group configuration
+
 
 resource "aws_security_group" "backend_Security_group" {
     name       = "backend_security_group"
@@ -68,6 +75,9 @@ resource "aws_security_group" "backend_Security_group" {
     }
     
 }
+
+
+# bastion server security group configuration
 
 resource "aws_security_group" "bastion_security_group" {
     name = "bastion_security_group"

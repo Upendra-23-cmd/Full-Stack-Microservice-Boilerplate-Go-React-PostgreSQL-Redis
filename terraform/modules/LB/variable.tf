@@ -12,13 +12,3 @@ variable "public_subnet_id_2" {
     description = "The ID of the second public subnet where the ALB will be deployed"
     type        = string
 }
-
-variable "instance_id" {
-    description = "The ID of the instance to be registered with the ALB target group"
-    type        = string
-}
-
-variable "instance_id_2" {
-    description = "The ID of the second instance to be registered with the ALB target group"
-    type        = string 
-}

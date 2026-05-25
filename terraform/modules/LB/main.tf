@@ -2,7 +2,7 @@ resource "aws_lb" "load_balancer_instace" {
     name = "my-alb"
     internal = false
     load_balancer_type = "application"
-    security_groups = [ aws_security_group.security_group_alb ]
+    security_groups = [ aws_security_group.security_group_alb.id ]
 
     subnets = [
         var.public_subnet_id,

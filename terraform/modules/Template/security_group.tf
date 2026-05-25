@@ -1,9 +1,10 @@
 
 # This file defines the security groups for the frontend, backend, and bastion host instances in the infrastructure.
 
-resource "aws_security_group" "frontend_Security_group" {
+resource "aws_security_group" "frontend_security_group" {
     name       = "frontend_security_group"
     description = "Security group for frontend instances"
+    vpc_id = var.vpc_id
 
     ingress {
         from_port = 22
@@ -16,7 +17,7 @@ resource "aws_security_group" "frontend_Security_group" {
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        security_groups = [var.alb_security_group_id.id]
+        security_groups = [var.alb_security_group_id[0]]
     }
 
     ingress {
@@ -43,9 +44,10 @@ resource "aws_security_group" "frontend_Security_group" {
 # backend server security group configuration
 
 
-resource "aws_security_group" "backend_Security_group" {
+resource "aws_security_group" "backend_security_group" {
     name       = "backend_security_group"
     description = "Security group for backend instances"
+        vpc_id = var.vpc_id
 
     ingress {
         description = "allow bastion host to access the instance"
@@ -82,6 +84,7 @@ resource "aws_security_group" "backend_Security_group" {
 resource "aws_security_group" "bastion_security_group" {
     name = "bastion_security_group"
     description = "Security group for bastion host"
+    vpc_id = var.vpc_id
 
     ingress {
         description = "allow SSH access from anywhere"

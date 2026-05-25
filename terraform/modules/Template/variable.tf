@@ -80,5 +80,5 @@ variable "volume_type_bastion" {
 
 variable "alb_security_group_id" {
     description = "The ID of the security group to allow access to the ALB"
-    type        = string
+    type        = list(string)
 }

@@ -15,22 +15,22 @@ output "public_subnet_ids_bastion" {
 
 output "private_subnet_id_frontend" {
     description = "The IDs of the private subnets"
-    value      = aws_subnet.frontend_private.id
+    value      = [aws_subnet.frontend_private.id]
 }
 
 output "private_subnet_id_backend" {
     description = "The IDs of the private subnets"
-    value      = aws_subnet.backend_private.id
+    value      = [aws_subnet.backend_private.id]
 }
 
 output "private_subnet_id_database" {
     description = "The IDs of the private subnets"
-    value      = aws_subnet.database_private_subnet.id
+    value      = [aws_subnet.database_private_subnet.id]
 }
 
 output "private_subnet_id_database_2" {
     description = "The IDs of the private subnets"
-    value      = aws_subnet.database_private_subnet_2.id
+    value      = [aws_subnet.database_private_subnet_2.id]
 }
 
 output "nat_gateway_id" {

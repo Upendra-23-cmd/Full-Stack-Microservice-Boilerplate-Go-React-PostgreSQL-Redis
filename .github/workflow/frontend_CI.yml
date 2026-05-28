@@ -1,0 +1,12 @@
+name: CI-buildandpush-image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-push:
+  runs-on: ubuntu-latest
+      

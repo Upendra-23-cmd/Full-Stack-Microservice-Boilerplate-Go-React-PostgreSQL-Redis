@@ -27,8 +27,7 @@ jobs:
         run: npm install
 
       - name: Run eslint to check code quality
-        run: npm install -D eslint@9 @eslint/js@9 globals eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import
-             npm run lint
+        run: npm run lint
 
       - name: test the application
         run: npm test -- --coverage

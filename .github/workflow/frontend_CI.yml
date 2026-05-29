@@ -9,4 +9,22 @@ on:
 jobs:
   build-and-push:
   runs-on: ubuntu-latest
+   steps:
+    -name: Checkout code
+      uses: actions/checkout@v2
+
+    -name: Set up node environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    -name: Install dependencies
+      run: npm install
+
+    -name: Run eslint to check code quality
+      run: npm run lint
+
+    -name: test the application
+      run: npm test
       
+    -name: 

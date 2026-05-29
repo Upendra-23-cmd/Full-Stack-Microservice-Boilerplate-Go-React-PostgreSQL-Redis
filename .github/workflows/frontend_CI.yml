@@ -16,18 +16,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up node environment
-       uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
       - name: Run eslint to check code quality
-       run: npm run lint
+        run: npm run lint
 
       - name: test the application
         run: npm test -- --coverage
@@ -36,8 +36,8 @@ jobs:
         run: npm run build
 
       - name: SonarQube code analysis
-       uses: SonarSource/sonarqube-scan-action@v5
-       env:
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
     
       - name: login to github ghcr

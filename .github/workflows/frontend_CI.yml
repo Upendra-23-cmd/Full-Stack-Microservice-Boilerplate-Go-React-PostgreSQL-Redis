@@ -21,12 +21,13 @@ jobs:
       - name: Set up node environment
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
 
       - name: Run eslint to check code quality
+        run: npm install -D eslint@9 @eslint/js@9 globals eslint-plugin-react eslint-plugin-react-hooks
         run: npm run lint
 
       - name: test the application

@@ -73,6 +73,7 @@ jobs:
     
       - name: push docker image
         run: |
+          REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           docker push ghcr.io/${ REPO }/frontend:${{ github.sha }}
           docker push ghcr.io/${ REPO }/frontend:latest
     

@@ -10,6 +10,9 @@ jobs:
   frontend-CI:
     runs-on: ubuntu-latest
     environment: SONAR_TOKEN
+    permissions:
+      contents: read
+      packages: write 
 
     defaults:
       run: 

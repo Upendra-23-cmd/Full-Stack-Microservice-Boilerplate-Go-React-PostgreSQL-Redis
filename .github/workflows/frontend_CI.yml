@@ -52,7 +52,7 @@ jobs:
         env:
          SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
          SONAR_HOST_URL: https://sonarcloud.io
-         with:
+        with:
           projectBaseDir: frontend 
     
       - name: login to github ghcr

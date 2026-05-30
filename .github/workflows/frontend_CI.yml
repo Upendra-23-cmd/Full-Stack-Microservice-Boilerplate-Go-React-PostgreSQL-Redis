@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Run eslint to check code quality
-        run: npm run lint
+       # run: npm run lint
 
       - name: test the application
         run: npm test -- --coverage

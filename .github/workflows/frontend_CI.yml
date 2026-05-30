@@ -39,6 +39,7 @@ jobs:
         env:
             SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
+            echo "length of SONARQUBE_TOKEN: ${#SONARQUBE_TOKEN}"
             if [ -z "$SONARQUBE_TOKEN" ]; then
               echo "SONARQUBE_TOKEN missing"
               exit 1

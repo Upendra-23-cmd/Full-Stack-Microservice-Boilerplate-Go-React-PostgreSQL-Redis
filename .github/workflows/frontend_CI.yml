@@ -38,7 +38,7 @@ jobs:
 
       - name: Debug Secrets
         env:
-            SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+            SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
             echo "length of SONARQUBE_TOKEN: ${#SONARQUBE_TOKEN}"
             if [ -z "$SONARQUBE_TOKEN" ]; then
@@ -50,7 +50,7 @@ jobs:
       - name: SonarQube code analysis
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+         SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
     
       - name: login to github ghcr
         uses: docker/login-action@v2

@@ -36,16 +36,17 @@ jobs:
         run: npm run build
 
       - name: Debug Secrets
+        env:
+            SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
-              if [ -n "${{ secrets.SONARQUBE_TOKEN }}" ]; then
-              echo "SONARQUBE_TOKEN exists"
-              else
-             echo "SONARQUBE_TOKEN missing"
-             exit 1
-              fi
+            if [ -z "$SONAR_TOKEN" ]; then
+              echo "SONARQUBE_TOKEN missing"
+              exit 1
+            fi
+            echo "SONARQUBE_TOKEN exists"
 
       - name: SonarQube code analysis
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
     

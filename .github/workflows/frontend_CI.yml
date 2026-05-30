@@ -64,6 +64,7 @@ jobs:
 
       - name: build  docker image
         run: |
+         REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
          docker build \
          -t ghcr.io/${{ github.repository }}/frontend:${{ github.sha }} \
          -t ghcr.io/${{ github.repository }}/frontend:latest \

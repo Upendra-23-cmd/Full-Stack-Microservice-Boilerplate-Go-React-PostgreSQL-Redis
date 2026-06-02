@@ -7,6 +7,36 @@ on:
     branches: [main]
 
 jobs:
-  build-and-push:
-  runs-on: ubuntu-latest
+  backend-CI:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+
+    defaults:
+      run: 
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Golang Enviroment
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23
+          cache: true
+
+      - name: Download dependencies
+        run: go mod tidy
+
+      - name: Verify dependencies
+        run: go mod verify
+
       
+
+        
+
+
+

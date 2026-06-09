@@ -34,7 +34,29 @@ jobs:
       - name: Verify dependencies
         run: go mod verify
 
-      - name: 
+      - name: Run tests
+        run: go test -v ./...
+
+      - name: Check code formatting
+        run: go fmt ./...
+
+      - name: check linting error
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: latest
+        
+      - name: SonarQube Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.projectKey=backend
+            -Dsonar.organization=sonarcloud-organization
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+      
+
+      
 
       
 

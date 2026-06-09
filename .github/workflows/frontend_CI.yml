@@ -1,4 +1,4 @@
-name: CI-buildandpush-image
+name: CI-frontend-image
 
 on:
   push:

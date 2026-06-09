@@ -1,4 +1,4 @@
-name: CI-buildandpush-image
+name: CI-infra-pipeline
 
 on:
   push:
@@ -8,5 +8,13 @@ on:
 
 jobs:
   build-and-push:
-  runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
+   permissions:
+      contents: read
+      packages: write
+      security-events: write
+
+   defaults:
+    run: 
+      working-directory: ./terraform
       

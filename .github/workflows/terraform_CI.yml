@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build-and-push:
+  terraform-ci:
    runs-on: ubuntu-latest
    permissions:
       contents: read
@@ -41,7 +41,7 @@ jobs:
       run: terraform plan -out=tfplan
 
     - name: SetUp tf lint
-      uses: terraform-linters/tflint-action@v4
+      uses: terraform-linters/setup-tflint@v4
 
     - name: Ts lint check
       run: |
@@ -49,5 +49,5 @@ jobs:
         tflint 
 
     - name: Terraform plan output
-      run: terraform show -no-color plan
+      run: terraform show -no-color tfplan
       

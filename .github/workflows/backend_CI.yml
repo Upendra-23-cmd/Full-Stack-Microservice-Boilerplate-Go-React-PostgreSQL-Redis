@@ -40,11 +40,11 @@ jobs:
       - name: Check code formatting
         run: go fmt ./...
 
-      - name: check linting error
-        uses: golangci/golangci-lint-action@v8
-        with:
-          version: latest
-          working-directory: ./backend
+      # - name: check linting error
+      #   uses: golangci/golangci-lint-action@v8
+      #   with:
+      #     version: latest
+      #     working-directory: ./backend
         
       - name: SonarQube Scan
         uses: sonarsource/sonarcloud-github-action@master

@@ -48,12 +48,14 @@ jobs:
         
       - name: SonarQube Scan
         uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=backend
             -Dsonar.organization=sonarcloud-organization
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
       
 

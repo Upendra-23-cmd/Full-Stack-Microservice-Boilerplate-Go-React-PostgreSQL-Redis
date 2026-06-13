@@ -51,9 +51,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
+          projectBaseDir: backend 
           args: >
-            -Dsonar.projectKey=backend
-            -Dsonar.organization=sonarcloud-organization
+            -Dsonar.projectKey=Upendra-23-cmd_Full-Stack-Microservice-Boilerplate-Go-React-PostgreSQL-Redis
+            -Dsonar.organization=upendra-23-cmd
             -Dsonar.host.url=https://sonarcloud.io
 
 
